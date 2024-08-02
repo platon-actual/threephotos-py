@@ -1,0 +1,26 @@
+<!-- Autor: Ramiro Iván Ríos.  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three Photos From Telegram!</title>
+</head>
+<body>
+
+    <header>
+        <h1>Vea la última foto, enviada desde: </h1>
+        <h2><a href="https://t.me/demotextbot">https://t.me/demotextbot</a></h2>
+    </header>
+
+    <main>
+        {% if image %}
+            hay imagen <br>
+            <img src="../static/downloads/images/la_imagen.jpg" alt="Imagen mas reciente">
+        {% else %}
+            <h3>No hay imágenes!</h3>
+        {% endif %}
+    </main>
+    
+</body>
+</html>
