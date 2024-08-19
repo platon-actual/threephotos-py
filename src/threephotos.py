@@ -65,26 +65,19 @@ def move_images(new_image):
     # Si hay 3 imágenes:
     if image_exists(NAME_IMAGE_3):
         # Si hay 2 imágenes.. (ver else:)
-        if image_exists(NAME_IMAGE_2):
+        copy_image(NAME_IMAGE_2, NAME_IMAGE_3)
+        copy_image(NAME_IMAGE_1, NAME_IMAGE_2)
+        save_image(NAME_IMAGE_1, new_image)
+        return True
+    else:
+        if not image_exists(NAME_IMAGE_1):
+            save_image(NAME_IMAGE_1, new_image)
+            return False
+        else:
             copy_image(NAME_IMAGE_2, NAME_IMAGE_3)
             copy_image(NAME_IMAGE_1, NAME_IMAGE_2)
             save_image(NAME_IMAGE_1, new_image)
             return True
-        else:
-            if not image_exists(NAME_IMAGE_1):
-                save_image(NAME_IMAGE_1, new_image)
-                return False
-            else:
-                copy_image(NAME_IMAGE_1, NAME_IMAGE_2)
-                save_image(NAME_IMAGE_1, new_image)
-                return True
-    else:
-        if not image_exists(NAME_IMAGE_1):
-            save_image(NAME_IMAGE_1, new_image)
-        else:
-            copy_image(NAME_IMAGE_1, NAME_IMAGE_2)
-            save_image(NAME_IMAGE_1, new_image)
-        
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=4000)
