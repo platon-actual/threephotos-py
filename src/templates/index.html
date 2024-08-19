@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Three Photos From Telegram!</title>
+    <link rel="stylesheet" href="../static/styles/index.css">
 </head>
 <body>
 
@@ -14,9 +15,11 @@
     </header>
 
     <main>
-        {% if image %}
-            hay imagen <br>
-            <img src="../static/downloads/images/la_imagen.jpg" alt="Imagen mas reciente">
+        {% if images %}
+            {% for image in images %}
+            <!-- hay imagen <br> -->
+            <img src="../static/downloads/images/{{ image }}" alt="Imagen mas reciente">
+            {% endfor %}
         {% else %}
             <h3>No hay imágenes!</h3>
         {% endif %}
