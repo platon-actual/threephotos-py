@@ -1,6 +1,6 @@
 # Ramiro Iván Ríos (2024)
 
-from flask import Flask, request, render_template, url_for
+from flask import Flask, request, render_template, redirect, url_for
 import os, shutil
 
 IMAGES_FOLDER = 'static/downloads/images/'
@@ -29,11 +29,10 @@ def upload_image():
     # elif (not image_exists(NAME_IMAGE_3)):
     #     save_image(NAME_IMAGE_3, image)
     
-    if (move_images(image)):
-        print("EXITOOOOOOO!!!!!!!!!")
-    else:
-        print("----- A REVISAR código -----")
-    return url_for('show_images')
+    move_images(image)
+    
+    # return url_for('show_images')
+    return redirect('/')
 
 @app.route('/test')
 def test():
@@ -63,21 +62,18 @@ def copy_image(origin, destination):
 
 def move_images(new_image):
     # Si hay 3 imágenes:
-    if image_exists(NAME_IMAGE_3):
+    if image_exists(NAME_IMAGE_2):
         # Si hay 2 imágenes.. (ver else:)
         copy_image(NAME_IMAGE_2, NAME_IMAGE_3)
         copy_image(NAME_IMAGE_1, NAME_IMAGE_2)
         save_image(NAME_IMAGE_1, new_image)
-        return True
     else:
         if not image_exists(NAME_IMAGE_1):
             save_image(NAME_IMAGE_1, new_image)
-            return False
         else:
-            copy_image(NAME_IMAGE_2, NAME_IMAGE_3)
+            # copy_image(NAME_IMAGE_2, NAME_IMAGE_3)
             copy_image(NAME_IMAGE_1, NAME_IMAGE_2)
             save_image(NAME_IMAGE_1, new_image)
-            return True
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=4000)

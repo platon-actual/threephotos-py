@@ -16,6 +16,7 @@
     </header>
 
     <main>
+        <article id="main_images">
         {% if images %}
             {% for image in images %}
             <!-- hay imagen <br> -->
@@ -24,7 +25,21 @@
         {% else %}
             <h3>No hay imágenes!</h3>
         {% endif %}
+        </article>
+
+        <!-- Un botón para subir imágenes -->
+        <br>
+        
+        <form action="/post_image" method="post" enctype="multipart/form-data">
+            <label for="image">Seleccione una imágen:</label>
+            
+            <input type="file" name="image" id="image">
+            <input type="submit" value="Subir imágen">
+        </form>
+
     </main>
-    
+    <footer>
+        <address><a href="https://linkedin.com/in/ramiroivanrios" target="_blank">Ramiro Ríos @ Linkedin</a></address>
+    </footer>
 </body>
 </html>

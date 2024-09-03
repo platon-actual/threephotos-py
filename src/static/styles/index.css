@@ -2,3 +2,18 @@ img {
     height: 15rem;
     width: auto;
 }
+
+form {
+    padding: 2rem;
+    border: 2px solid black;
+}
+
+address {
+    font-size: 1.5rem;
+}
+
+#main_images {
+    display: flex;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
